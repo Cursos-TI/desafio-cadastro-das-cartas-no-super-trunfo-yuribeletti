@@ -12,10 +12,11 @@ struct Carta {
 };
 
 int main() {
+    // Variaveis do tipo struct para armazenar os dados das cartas
     struct Carta carta1;
     struct Carta carta2;
 
-    // Print e Scan para obter os dados
+    // Print e Scan para pedir e armazenar os dados nas variaveis da carta1
     printf("Cadastro da Carta 1:\n");
 
     printf("Digite o Estado (letra de A a H): ");
@@ -40,6 +41,7 @@ int main() {
     scanf("%d", &carta1.pontosTuristicos);
 
 
+    // Print e Scan para pedir e armazenar os dados nas variaveis da carta2
     printf("\nCadastro da Carta 2:\n");
 
     printf("Digite o Estado (letra de A a H): ");
@@ -63,7 +65,7 @@ int main() {
     printf("Digite o Número de Pontos Turísticos: ");
     scanf("%d", &carta2.pontosTuristicos);
 
-    // Exibição dos dados cadastrados
+    // Exibição dos dados cadastrados com \n para dar o Enter
     printf("\nCarta 1:\n");
     printf("Estado: %c\n", carta1.estado);
     printf("Código: %s\n", carta1.codigo);

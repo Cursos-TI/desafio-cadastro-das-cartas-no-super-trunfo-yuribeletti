@@ -14,7 +14,7 @@ int main() {
     float pibPerCapita1, pibPerCapita2;
     float superPoder1, superPoder2;
     int usarSuperPoder;
-    
+
     printf("\n*** Super Trunfo - Países ***\n");
     printf("1. Iniciar o Jogo\n");
     printf("2. Sair\n");
@@ -60,7 +60,7 @@ int main() {
 
         superPoder1 = (float)populacao1 + pontos1 + area1 + pib1 + pibPerCapita1;
         if (densidade1 != 0.0f) superPoder1 += (1.0f / densidade1);
-        
+
         superPoder2 = (float)populacao2 + pontos2 + area2 + pib2 + pibPerCapita2;
         if (densidade2 != 0.0f) superPoder2 += (1.0f / densidade2);
 
@@ -88,6 +88,7 @@ int main() {
                 printf("\n%s venceu com o Super Poder!\n", pais2);
             else
                 printf("\nEmpate no Super Poder!\n");
+
         } else {
             printf("\nEscolha o segundo atributo (diferente do primeiro):\n");
             for (int i = 1; i <= 5; i++) {
@@ -112,15 +113,15 @@ int main() {
                        (atributo1 == 3) ? area1 :
                        (atributo1 == 4) ? pib1 : densidade1;
 
-            valor2_1 = (atributo2 == 1) ? populacao1 :
-                       (atributo2 == 2) ? pontos1 :
-                       (atributo2 == 3) ? area1 :
-                       (atributo2 == 4) ? pib1 : densidade1;
-
-            valor1_2 = (atributo1 == 1) ? populacao2 :
+            valor2_1 = (atributo1 == 1) ? populacao2 :
                        (atributo1 == 2) ? pontos2 :
                        (atributo1 == 3) ? area2 :
                        (atributo1 == 4) ? pib2 : densidade2;
+
+            valor1_2 = (atributo2 == 1) ? populacao1 :
+                       (atributo2 == 2) ? pontos1 :
+                       (atributo2 == 3) ? area1 :
+                       (atributo2 == 4) ? pib1 : densidade1;
 
             valor2_2 = (atributo2 == 1) ? populacao2 :
                        (atributo2 == 2) ? pontos2 :
@@ -129,20 +130,31 @@ int main() {
 
             int pontosGanho1 = 0, pontosGanho2 = 0;
 
-            if (valor1_1 > valor2_1) pontosGanho1++;
-            else if (valor1_1 < valor2_1) pontosGanho2++;
+            if (atributo1 == 5) {
+                if (valor1_1 < valor2_1) pontosGanho1++;
+                else if (valor1_1 > valor2_1) pontosGanho2++;
+            } else {
+                if (valor1_1 > valor2_1) pontosGanho1++;
+                else if (valor1_1 < valor2_1) pontosGanho2++;
+            }
 
-            if (valor1_2 > valor2_2) pontosGanho1++;
-            else if (valor1_2 < valor2_2) pontosGanho2++;
+            if (atributo2 == 5) {
+                if (valor1_2 < valor2_2) pontosGanho1++;
+                else if (valor1_2 > valor2_2) pontosGanho2++;
+            } else {
+                if (valor1_2 > valor2_2) pontosGanho1++;
+                else if (valor1_2 < valor2_2) pontosGanho2++;
+            }
 
             if (pontosGanho1 == 2) {
-                printf("\n%s venceu a rodada! (Ganhou ambos os atributos!)\n", pais1);
+                printf("\n%s venceu a rodada!\n", pais1);
             } else if (pontosGanho2 == 2) {
-                printf("\n%s venceu a rodada! (Ganhou ambos os atributos!)\n", pais2);
+                printf("\n%s venceu a rodada!\n", pais2);
             } else {
-                printf("\nEmpate na rodada! (Ninguém ganhou ambos os atributos ou houve empates individuais!)\n");
+                printf("\nEmpate na rodada!\n");
             }
         }
+
     } else if (opcao == 2) {
         printf("Saindo do jogo...\n");
         return 0;
